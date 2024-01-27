@@ -25,7 +25,7 @@ app.use("/customer/auth/*", function auth(req,res,next){
      } else {
          return res.status(403).json({message: "User not logged in"})
      }
-//Write the authenication mechanism here - done
+//Write the authenication mechanism here - done ok
 });
  
 const PORT =5000;
