@@ -28,14 +28,30 @@ public_users.get('/author/:author',function (req, res) {
 
   //Write your code here
   const author = req.params.author;
+  let i = 0;
+    do {
+    const iterbooks= books[i];
+    i++;
+    } while (books[i].author != author);
   //return res.status(300).json({message: "Yet to be implemented"});
-  return res.send(JSON.stringify(books[author],null,4))
+  //return res.send(JSON.stringify(books[author],null,4))
+  //return res.send(Object.keys(books))
+  return res.send("books by author:" + JSON.stringify(books[i],null,4))
 });
 
 // Get all books based on title
 public_users.get('/title/:title',function (req, res) {
   //Write your code here
-  return res.status(300).json({message: "Yet to be implemented"});
+  const title = req.params.title;
+  let i = 0;
+    do {
+    const iterbooks= books[i];
+    i++;
+    } while (books[i].title != title);
+  //return res.status(300).json({message: "Yet to be implemented"});
+  //return res.send(JSON.stringify(books[author],null,4))
+  //return res.send(Object.keys(books))
+  return res.send("books by title:" + JSON.stringify(books[i],null,4))
 });
 
 //  Get book review
