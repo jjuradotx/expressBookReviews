@@ -44,10 +44,18 @@ regd_users.post("/login", (req,res) => {
 regd_users.put("/auth/review/:isbn", (req, res) => {
   //Write your code here
     const isbn = req.params.isbn;
+    const newReview= req.query.review;
+    const username = req.body.username;
+    const password = req.body.password;
+    //let obj= JSON.parse(books[isbn].reviews)
+    books[isbn].reviews = {"username":username,"review":newReview};
+    //let review = books[isbn].reviews
+    
+    
     //let books = books[isbn]
     //obj = JSON.parse(books["reviews"]);
     //shareInfoLen = Object.keys(obj.shareInfo[0]).leng
-    return res.status(208).send(books[isbn].reviews);
+    return res.status(208).json({message: "The review for the book with ISBN " + ISBN + "has been added/updated"});
 });
 
 module.exports.authenticated = regd_users;
