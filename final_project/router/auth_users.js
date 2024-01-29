@@ -55,7 +55,7 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
     //let books = books[isbn]
     //obj = JSON.parse(books["reviews"]);
     //shareInfoLen = Object.keys(obj.shareInfo[0]).leng
-    return res.status(208).json({message: "The review for the book with ISBN " + ISBN + "has been added/updated"});
+    return res.status(208).json({message: "The review for the book with ISBN " + isbn + " has been added/updated"});
 });
 
 module.exports.authenticated = regd_users;
