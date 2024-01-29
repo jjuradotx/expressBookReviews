@@ -58,6 +58,24 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
     return res.status(208).json({message: "The review for the book with ISBN " + isbn + " has been added/updated"});
 });
 
+regd_users.delete("/auth/review/:isbn", (req, res) => {
+    //Write your code here
+      const isbn = req.params.isbn;
+      const newReview= req.query.review;
+      const username = req.body.username;
+      const password = req.body.password;
+      //delReview = books[isbn].filter((authorR)=> authorR.reviews = username )
+      //let obj= JSON.parse(books[isbn].reviews)
+      books[isbn].reviews ={}
+      //let review = books[isbn].reviews
+      
+      
+      //let books = books[isbn]
+      //obj = JSON.parse(books["reviews"]);
+      //shareInfoLen = Object.keys(obj.shareInfo[0]).leng
+      return res.status(208).json({message: "The review for the book with ISBN " + isbn + " has been deleted"});
+  });
+
 module.exports.authenticated = regd_users;
 module.exports.isValid = isValid;
 module.exports.users = users;
