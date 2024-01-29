@@ -3,6 +3,47 @@ let books = require("./booksdb.js");
 let isValid = require("./auth_users.js").isValid;
 let users = require("./auth_users.js").users;
 const public_users = express.Router();
+const axios = require('axios').default;
+
+//let filename='./booksdb.js'
+
+//Creating a promise method. The promise will get resolved when timer times out after 6 seconds.
+let myPromise = new Promise((resolve,reject) => {
+    setTimeout(() => {
+      resolve("Promise resolved")
+    },6000)})
+
+
+const readData = (file)=>{
+    const req = axios.get(file);
+    console.log(req);
+    req.then(resp => {
+        console.log("Fulfilled")
+        console.log(resp.data);
+    })
+    .catch(err => {
+        console.log("Rejected for file "+file)
+        console.log(err.toString())
+    });
+}
+
+//readData(filename)
+
+let fs = require('fs');
+const methCall = new Promise((resolve,reject)=>{
+    let filename = './booksdb.js';
+    try {
+      const data = fs.readFileSync(filename, {encoding:'utf8', flag:'r'});
+      resolve(data);
+    } catch(err) {
+      reject(err)
+    }
+});
+//console.log(methCall);
+methCall.then(
+  (data) => console.log(data),
+  (err) => console.log("Error reading file")
+);
 
 const doesExist = (username)=>{
     let userswithsamename = users.filter((user)=>{
